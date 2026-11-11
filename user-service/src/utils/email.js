@@ -9,6 +9,10 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const minutes = (config.OTP_TTL || 300) / 60;
 
 async function sendOtpEmail(email, otp) {
+    if (!config.MAIL_SEND) {
+        throw new Error('MAIL_SEND is not configured');
+    }
+
     const msg = {
         to: email,
         from: `${config.MAIL_SEND}`,
@@ -72,6 +76,9 @@ async function sendOtpEmail(email, otp) {
 }
 
 async function verifyOtpEmail(meta) {
+    if (!config.MAIL_SEND) {
+        throw new Error('MAIL_SEND is not configured');
+    }
 
     const msg = {
         to: meta.email,

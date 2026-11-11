@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const { config } = require('./config');
 const logger = require('./config/logger');
 
-// const authRoutes = require('./routes/auth.route');
+const authRoutes = require('./routes/auth.route');
 // const userRoutes = require('./routes/user.route');
 
 const { corsMiddleware } = require('./middlewares/cors.middleware');
@@ -19,7 +19,7 @@ app.use(corsMiddleware);
 app.use(reqLogger);
 app.use(express.json());
 app.use(cookieParser());
-// app.use('/auth', authRoutes);
+app.use('/api/v1/auth', authRoutes);
 // app.use('/users', userRoutes);
 
 
@@ -32,6 +32,8 @@ app.get("/health", (req, res) => {
           message: "ok"
      })
 })
+
+app.use(errorHandler);
 
 const startServer = async () => {
      try {

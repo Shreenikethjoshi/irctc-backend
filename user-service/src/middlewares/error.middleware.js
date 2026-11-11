@@ -20,7 +20,6 @@ module.exports = (err, req, res, next) => {
                stack: err.stack,
                path: req.path,
                method: req.method,
-               body: req.body,
                query: req.query
           })
      }
