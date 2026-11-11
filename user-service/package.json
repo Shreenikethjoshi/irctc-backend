@@ -19,6 +19,7 @@
     "express": "^5.3.0",
     "helmet": "^8.3.0",
     "ioredis": "^6.0.0",
+    "jsonwebtoken": "^9.0.3",
     "otp-generator": "^4.0.1",
     "pg": "^8.23.1",
     "redis": "^6.3.1",
