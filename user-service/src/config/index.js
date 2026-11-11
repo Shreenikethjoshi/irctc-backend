@@ -24,6 +24,10 @@ const config = {
 
      MAIL_SEND: process.env.MAIL_SEND,
      SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
+     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+
+     INTERNAL_SERVICE_KEY: process.env.INTERNAL_SERVICE_KEY,
 };
 
 module.exports = { config };
