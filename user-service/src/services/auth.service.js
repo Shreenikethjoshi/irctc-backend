@@ -1,0 +1,22 @@
+const { ConflictError } = require("../utils/error")
+const {generateAndStoreOtp}= require('../utils/otp')
+const {sendOtpEmail}=require('../utils/email')
+const bcrypt = require('bcrypt')
+
+
+
+const sendOTP=async(firstName,lastName,sendOtpEmail,password)=>{
+    const existingUser=await prisma.user.findUnique({
+        where:{email}
+    })
+    if(existingUser){
+        throw new ConflictError("user alreayd exists")
+    }
+    const hashedPassword=await bcrypt.hash(password,12);
+    const meta = {firstName,lastName,email,hashedPassword};
+    const {otp,otpSessionId}= await generateAndStoreOtp(meta);
+    await sendOtpEmail(email,otp);
+    return {otpSessionId}
+}
+
+module.exports={sendOTP}
