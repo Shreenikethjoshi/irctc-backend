@@ -8,7 +8,7 @@ exports.getProfile = asyncHandler(async(req,res)=>{
     if(!userId){
         throw new BadRequestError("User id is missing")
     }
-    const user=await authService.getProfile(userId);
+    const user=await userService.getProfile(userId);
     return res.status(200).json({
         success:true,
         message :"Fetched user details",
